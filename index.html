@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paasme - ગુજરાત માં સ્થાનિક સેવાઓ શોધો | Find Local Services in Gujarat">
+    <title>Paasme - ગુજરાતમાં સ્થાનિક સેવાઓ શોધો</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0369a1;
+            --accent: #f97316;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .lang-toggle {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-input {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            min-width: 250px;
+        }
+
+        .search-btn {
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #ea580c;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .category-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .category-card p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--white);
+            padding: 60px 40px;
+            margin: 40px 0;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .feature-box p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .rating {
+            color: #fbbf24;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background: #ea580c;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 15px 40px;
+            border: 2px solid var(--white);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .search-input {
+                min-width: 200px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+        /* Language Specific */
+        .gu-text {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span>🏠</span>
+                <span>Paasme</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">સેવાઓ</a></li>
+                <li><a href="#features">વિશેષતાઓ</a></li>
+                <li><a href="#testimonials">રીવ્યુ</a></li>
+                <li><a href="#contact">સંપર્ક</a></li>
+            </ul>
+            <button class="lang-toggle">English</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>ગુજરાતમાં સ્થાનિક સેવાઓ શોધો</h1>
+            <p>વિશ્વસ્ત સેવા પ્રદાતાઓ સીધા તમારા પાસે - તમારા શહેર, તમારી ભાષામાં</p>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="સેવા શોધો (પ્લમ્બર, ઈલેક્ટ્રિશિયન...)">
+                <input type="text" class="search-input" placeholder="તમારું શહેર નામ">
+                <button class="search-btn">🔍 શોધો</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="services">
+        <h2 class="section-title">લોકપ્રિય સેવાઓ</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">🔧</div>
+                <h3>પ્લમ્બર</h3>
+                <p>પાણીની સેવા</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚡</div>
+                <h3>ઈલેક્ટ્રિશિયન</h3>
+                <p>ઘર મરામત</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🧹</div>
+                <h3>ક્લીનિંગ</h3>
+                <p>ઘર સાફ સફાઈ</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🛠️</div>
+                <h3>પેઇન્ટર</h3>
+                <p>ઘર રંગાઈ</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🚗</div>
+                <h3>મેકેનિક</h3>
+                <p>કાર મરામત</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💇</div>
+                <h3>સલૂન</h3>
+                <p>બ્યુટી સેવા</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <h3>ટ્યુશન</h3>
+                <p>શિક્ષણ સેવા</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏥</div>
+                <h3>ડૉક્ટર</h3>
+                <p>આરોગ્ય સેવા</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🍽️</div>
+                <h3>રેસ્ટોરન્ટ</h3>
+                <p>ખાવાની સુવિધા</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <h3>રીયલ એસ્ટેટ</h3>
+                <p>મકાન વેચાણ</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <h3>મોબાઈલ સર્વિસ</h3>
+                <p>ફોન મરામત</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎓</div>
+                <h3>વધુ સેવાઓ</h3>
+                <p>તમારી સેવા યાદી કરો</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <h2 class="section-title">આપણે શા માટે?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">✅</div>
+                    <h3>ચકાસાયેલ સેવાઓ</h3>
+                    <p>બધા સેવા પ્રદાતાઓ ચકાસાયેલ અને વિશ્વસ્ત છે</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⭐</div>
+                    <h3>ગ્રાહક રીવ્યુ</h3>
+                    <p>સેવા લેનાર લોકોના સત્ય રીવ્યુ વાંચો</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📞</div>
+                    <h3>સીધો સંપર્ક</h3>
+                    <p>સીધા ફોન, ચેટ કરો - કોઈ મધ્યસ્થી નહીં</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💰</div>
+                    <h3>ખુલ્લી કીમતો</h3>
+                    <p>કોઈ છુપી ખર્ચ નહીં - સીધી કીમતો</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>ઝડપી સેવા</h3>
+                    <p>ઘર બેસીને સેવા બુક કરો</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🇮🇳</div>
+                    <h3>ગુજરાતી ભાષા</h3>
+                    <p>તમારી ભાષામાં ખરાબ - ખુલ્લી વાતચીત</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">ગ્રાહકો શું કહે છે</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Paasme ના કારણે મારું પ્લમ્બિંગ સમસ્યા પાંચ કલાકમાં સુધી ગયું। ખુબ સારી સેવા!"</p>
+                    <div class="testimonial-author">રાજીવ પટેલ</div>
+                    <div class="testimonial-role">અમદાવાદ</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"ઈલેક્ટ્રિશિયન મારી ઓફીસમાં આવ્યો અને તુરંત સમસ્યા ઠીક કરી દીધી। બધા ખર્ચ આગલાથી જણાવી દીધો।"</p>
+                    <div class="testimonial-author">ગીતા શર્મા</div>
+                    <div class="testimonial-role">વડોદરા</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Paasme માટે આપણો હોમ ક્લીનિંગ બુક કર્યું. એક દમ પ્રોફેશનલ અને સસ્તી સેવા મળી."</p>
+                    <div class="testimonial-author">વિજય જોશી</div>
+                    <div class="testimonial-role">સુરત</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-container">
+            <h2>તમારી સેવા શોધવા માટે તૈયાર છો?</h2>
+            <p>હજાર સેવા પ્રદાતા તમારી સેવાનું રાહ જોઈ રહ્યાં છે</p>
+            <div class="cta-buttons">
+                <button class="btn-primary">🔍 સેવા શોધો</button>
+                <button class="btn-secondary">📞 ફોન કરો: 97732236540</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Paasme વિશે</h3>
+                <p>Paasme એક સ્થાનિક સેવા ડાયરેક્ટરી છે જ્યાં તમે ગુજરાતમાં વિશ્વસ્ત સેવા પ્રદાતાઓ શોધી શકો છો।</p>
+            </div>
+            <div class="footer-section">
+                <h3>લોકપ્રિય સેવાઓ</h3>
+                <ul>
+                    <li><a href="#">પ્લમ્બર</a></li>
+                    <li><a href="#">ઈલેક્ટ્રિશિયન</a></li>
+                    <li><a href="#">ક્લીનિંગ સેવા</a></li>
+                    <li><a href="#">પેઇન્ટર</a></li>
+                    <li><a href="#">આરોગ્ય સેવા</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>શહેરો</h3>
+                <ul>
+                    <li><a href="#">અમદાવાદ</a></li>
+                    <li><a href="#">સુરત</a></li>
+                    <li><a href="#">વડોદરા</a></li>
+                    <li><a href="#">રાજકોટ</a></li>
+                    <li><a href="#">વધુ શહેરો</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>સંપર્ક કરો</h3>
+                <div class="contact-info">
+                    <p>📧 ઈમેલ:</p>
+                    <a href="mailto:paasmeindia@gmail.com">paasmeindia@gmail.com</a>
+                    <p style="margin-top: 15px;">📱 ફોન:</p>
+                    <a href="tel:+919773223654">+91 97732236540</a>
+                    <p style="margin-top: 15px;">💬 WhatsApp:</p>
+                    <a href="https://wa.me/919773223654">Message us on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Paasme. સર્વ અધિકાર સુરક્ષિત છે | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        document.querySelector('.lang-toggle').addEventListener('click', function() {
+            alert('English version coming soon!');
+        });
+
+        // Search Button
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const service = document.querySelectorAll('.search-input')[0].value;
+            const city = document.querySelectorAll('.search-input')[1].value;
+            if(service && city) {
+                alert(`${service} શોધી રહ્યા છીએ ${city} માં...`);
+            } else {
+                alert('કૃપા કરીને સેવા અને શહેર બંને દાખલ કરો');
+            }
+        });
+
+        // Category Cards Click
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const service = this.querySelector('h3').textContent;
+                alert(`${service} સેવા શોધી રહ્યા છીએ...`);
+            });
+        });
+
+        // CTA Buttons
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelector('.search-box').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
