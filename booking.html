@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="gu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>બુકિંગ | Paasme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Paasme home">
+          <span class="brand-mark">P</span>
+          <span class="brand-text">Paasme</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">હોમ</a>
+          <a href="services.html">સેવાઓ</a>
+          <a href="dashboard.html">ડેશબોર્ડ</a>
+          <a href="login.html">લોગિન</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="booking-panel">
+        <h2>સેવા બુકિંગ</h2>
+        <form id="bookingForm" class="booking-form">
+          <input id="customerName" type="text" placeholder="નામી" required />
+          <input id="phone" type="tel" placeholder="ફોન નંબર" required />
+          <select id="serviceType" required>
+            <option value="">સેવા પસંદ કરો</option>
+            <option>પ્લમ્બર</option>
+            <option>ઈલેક્ટ્રિશિયન</option>
+            <option>ક્લીનિંગ</option>
+            <option>પેંટર</option>
+            <option>મેકેનિક</option>
+            <option>સલૂન</option>
+            <option>ડોક્ટર</option>
+          </select>
+          <select id="city" required>
+            <option value="">શહેર પસંદ કરો</option>
+            <option>અમદાવાદ</option>
+            <option>સુરત</option>
+            <option>વડોદરા</option>
+            <option>રાજકોટ</option>
+            <option>ગાંધીનગર</option>
+          </select>
+          <input id="bookingDate" type="date" required />
+          <textarea id="notes" placeholder="વધુ માહિતી / શરતો"></textarea>
+          <div class="booking-actions">
+            <button class="btn btn-primary" type="submit">બુકિંગ મોકલો</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

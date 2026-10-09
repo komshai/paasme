@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="gu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ડેશબોર્ડ | Paasme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Paasme home">
+          <span class="brand-mark">P</span>
+          <span class="brand-text">Paasme</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">હોમ</a>
+          <a href="booking.html">બુકિંગ</a>
+          <a href="services.html">સેવાઓ</a>
+          <a href="login.html">લોગિન</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div id="dashboardPanel" class="dashboard-panel">
+        <h2 id="userGreeting">હાલનો ડેશબોર્ડ</h2>
+        <div class="summary-box">
+          <div class="summary-item"><span>બુકિંગ કુલ</span><strong id="bookingCount">0</strong></div>
+          <div class="summary-item"><span>સ્ટેટસ</span><strong>એક્ટિવ</strong></div>
+        </div>
+
+        <div class="booking-list">
+          <h3>તાજા બુકિંગ્સ</h3>
+          <ul id="bookingsList"></ul>
+        </div>
+
+        <div class="auth-actions">
+          <button id="logoutBtn" class="btn btn-outline" type="button">લોગઆઉટ</button>
+          <button id="varsalSyncBtn" class="btn btn-primary" type="button">Varsal sync</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="gu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>લોગિન | Paasme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="Paasme home">
+          <span class="brand-mark">P</span>
+          <span class="brand-text">Paasme</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">હોમ</a>
+          <a href="services.html">સેવાઓ</a>
+          <a href="booking.html">બુકિંગ</a>
+          <a href="add-business.html">બિઝનેસ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="auth-card">
+        <h2>લોગિન</h2>
+        <form id="loginForm" class="auth-form">
+          <input id="email" type="email" placeholder="ઈમેલ દાખલ કરો" required />
+          <input id="password" type="password" placeholder="પાસવર્ડ" required />
+          <div class="auth-actions">
+            <button class="btn btn-primary" type="submit">લોગિન</button>
+          </div>
+        </form>
+        <div class="note-box">
+          <p>નવું વપરાશકર્તા? <a href="booking.html">બુકિંગ સાઇટ પર જાઓ</a></p>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
