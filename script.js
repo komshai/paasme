@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.querySelector('.search-box .btn-primary');
   const categoryCards = document.querySelectorAll('.category-card');
-  const btns = document.querySelectorAll('.btn');
 
   if (searchButton) {
     searchButton.addEventListener('click', () => {
@@ -16,15 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => {
       const label = card.querySelector('h3')?.textContent || 'સેવા';
       window.location.href = `services.html?service=${encodeURIComponent(label)}`;
-    });
-  });
-
-  btns.forEach((btn) => {
-    btn.addEventListener('mouseenter', () => {
-      btn.style.transform = 'translateY(-1px)';
-    });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = 'translateY(0)';
     });
   });
 });
